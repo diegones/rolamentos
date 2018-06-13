@@ -47,11 +47,5 @@
     <Compile Include="RolamentoController.cs" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Modelos\Modelos.csproj">
-      <Project>{B59684DA-B303-4F56-93BA-731ADB01B64A}</Project>
-      <Name>Modelos</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

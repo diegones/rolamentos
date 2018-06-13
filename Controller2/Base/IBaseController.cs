@@ -1,6 +1,9 @@
-﻿namespace Controllers
+﻿namespace Controllers.Base
 {
-    public interface IBaseController<T>
+    interface IBaseController<T> where T : class
     {
+
+
+
     }
 }

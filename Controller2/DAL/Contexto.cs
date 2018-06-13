@@ -1,7 +1,7 @@
 ﻿using Modelos;
 
-namespace Controllers
-{
+namespace Controllers.DAL
+{   
     class Contexto : DbContext
     {
         public Contexto() : base("strConn")
