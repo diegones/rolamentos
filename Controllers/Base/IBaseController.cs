@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Controllers.Base
+namespace Controller.Base
 {
     interface IBaseController<T> where T : class
     {

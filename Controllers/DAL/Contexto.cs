@@ -1,7 +1,7 @@
 ﻿using Modelos;
 using System.Data.Entity;
 
-namespace Controllers.DAL
+namespace Controller.DAL
 {   
     class Contexto : DbContext
     {
