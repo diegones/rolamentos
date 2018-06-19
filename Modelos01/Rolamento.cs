@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,9 @@ namespace Modelos
 {
     public class Rolamento
     {
-        public int Sku { get; set; }
+        public int Id { get; set; }
+
+        public string Sku { get; set; }
 
         public int Di { get; set; }
 
@@ -17,5 +20,7 @@ namespace Modelos
         public int W1 { get; set; }
             
         public bool Ativo { get; set; }
+        
+        public ICollection<Veiculo> ListaVeiculos { get; set; }
     }
 }

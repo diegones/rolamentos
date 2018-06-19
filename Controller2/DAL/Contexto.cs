@@ -1,4 +1,5 @@
 ﻿using Modelos;
+using System.Data.Entity;
 
 namespace Controllers.DAL
 {   
@@ -7,6 +8,7 @@ namespace Controllers.DAL
         public Contexto() : base("strConn")
         {
         }
-        public Dbset<Rolamento> Rolamentos { get; set; }
+        public DbSet<Rolamento> Rolamentos { get; set; }
+        public DbSet<Veiculo> Veiculos { get; set; }
     }
 }
