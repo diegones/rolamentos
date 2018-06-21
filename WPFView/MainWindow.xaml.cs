@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Controllers;
+using Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,44 @@ namespace WPFView
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnCadastrarRol(object sender, RoutedEventArgs e)
+        {
+            try
+
+            {
+                RolamentoController rolamentoController = new RolamentoController();
+                               
+                if (string.IsNullOrEmpty(txtSku.Text))
+
+                    throw new NullReferenceException("O campo SKU é obrigatório.");
+
+                Rolamento rolamento = new Rolamento();
+
+                rolamento.Sku = txtSku.Text;                    
+                rolamentoController.Incluir(rolamento);                        
+                MessageBox.Show("Usuário Salvo com sucesso!");
+            }
+
+            catch(NullReferenceException nre)
+            {
+                // excecao mais especifica
+            }        
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar (" + ex.Message + ")");
+            }
+        }
+
+        private void BtnBuscarRol(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCancelarRol(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
