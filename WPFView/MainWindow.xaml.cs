@@ -42,7 +42,7 @@ namespace WPFView
 
                 rolamento.Sku = txtSku.Text;                    
                 rolamentoController.Incluir(rolamento);                        
-                MessageBox.Show("Usuário Salvo com sucesso!");
+                MessageBox.Show("Rolamento Salvo com sucesso!");
             }
 
             catch(NullReferenceException nre)
