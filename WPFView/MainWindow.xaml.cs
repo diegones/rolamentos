@@ -27,7 +27,7 @@ namespace WPFView
             InitializeComponent();
         }
 
-        private void BtnCadastrarRol(object sender, RoutedEventArgs e)
+        private void BtnCadastrarRol_Click(object sender, RoutedEventArgs e)
         {
             try
 
@@ -44,23 +44,21 @@ namespace WPFView
                 rolamentoController.Incluir(rolamento);                        
                 MessageBox.Show("Rolamento Salvo com sucesso!");
             }
-
-            catch(NullReferenceException nre)
-            {
-                // excecao mais especifica
-            }        
+     
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao salvar (" + ex.Message + ")");
             }
         }
 
-        private void BtnBuscarRol(object sender, RoutedEventArgs e)
+        private void BtnBuscarRol_Click (object sender, RoutedEventArgs e)
         {
+            frmRolamento cadRol = new frmRolamento(); //criar classes
 
+            cadRol.ShowDialog();
         }
 
-        private void BtnCancelarRol(object sender, RoutedEventArgs e)
+        private void BtnCancelarRol_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

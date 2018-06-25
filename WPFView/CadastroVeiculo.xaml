@@ -1,0 +1,19 @@
+﻿<Window x:Class="WPFView.CadastroVeiculo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFView"
+        mc:Ignorable="d"
+        Title="CadastroVeiculo" Height="450" Width="800">
+    <Grid>
+        <TextBox Name="txtMarca" HorizontalAlignment="Left" Height="23" Margin="405,128,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtModelo" HorizontalAlignment="Left" Height="22" Margin="405,169,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+        <Label Content="Marca" HorizontalAlignment="Left" Margin="337,125,0,0" VerticalAlignment="Top"/>
+        <Label Content="Modelo" HorizontalAlignment="Left" Margin="337,169,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BtnCadastrarVeic" Content="Cadastrar" HorizontalAlignment="Left" Margin="352,226,0,0" VerticalAlignment="Top" Width="76" Click="BtnCadastrarVeic_Click"/>
+        <Button x:Name="BtnBuscarVeic" Content="Buscar" HorizontalAlignment="Left" Margin="352,251,0,0" VerticalAlignment="Top" Width="76" Click="BtnBuscarVeic_Click"/>
+        <Button x:Name="BtnCancelarVeic" Content="Cancelar" HorizontalAlignment="Left" Margin="352,276,0,0" VerticalAlignment="Top" Width="76" Click="BtnCancelarVeic_Click"/>
+
+    </Grid>
+</Window>
