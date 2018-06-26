@@ -8,7 +8,7 @@
         Title="CadastroVeiculo" Height="450" Width="800">
     <Grid>
         <TextBox Name="txtMarca" HorizontalAlignment="Left" Height="23" Margin="405,128,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtModelo" HorizontalAlignment="Left" Height="22" Margin="405,169,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="TextBox_GotFocus"/>
+        <TextBox Name="txtModelo" HorizontalAlignment="Left" Height="22" Margin="405,169,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Marca" HorizontalAlignment="Left" Margin="337,125,0,0" VerticalAlignment="Top"/>
         <Label Content="Modelo" HorizontalAlignment="Left" Margin="337,169,0,0" VerticalAlignment="Top"/>
         <Button x:Name="BtnCadastrarVeic" Content="Cadastrar" HorizontalAlignment="Left" Margin="352,226,0,0" VerticalAlignment="Top" Width="76" Click="BtnCadastrarVeic_Click"/>

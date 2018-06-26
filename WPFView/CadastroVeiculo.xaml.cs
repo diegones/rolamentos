@@ -35,7 +35,7 @@ namespace WPFView
 
                 if (string.IsNullOrEmpty(txtMarca.Text))
 
-                    throw new NullReferenceException("O campo SKU é obrigatório.");
+                    throw new NullReferenceException("O campo marca é obrigatório.");
 
                 Veiculo veiculo = new Veiculo();
 
@@ -48,6 +48,21 @@ namespace WPFView
             {
                 MessageBox.Show("Erro ao salvar (" + ex.Message + ")");
             }
+        }
+        private void BtnBuscarVeic_Click (object sender, RoutedEventArgs e)
+        {
+            CadastroVeiculo cadVeic = new CadastroVeiculo();
+
+            cadVeic.ShowDialog();
+        }
+
+        private void BtnCancelarVeic_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            //Inicio telaInicial = new Inicio();
+
+            //telaInicial.ShowDialog();
+            ;
         }
     }
 }

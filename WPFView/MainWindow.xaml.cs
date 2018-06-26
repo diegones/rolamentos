@@ -53,7 +53,7 @@ namespace WPFView
 
         private void BtnBuscarRol_Click (object sender, RoutedEventArgs e)
         {
-            frmRolamento cadRol = new frmRolamento(); //criar classes
+            MainWindow cadRol = new MainWindow(); 
 
             cadRol.ShowDialog();
         }
@@ -61,6 +61,10 @@ namespace WPFView
         private void BtnCancelarRol_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+           // Inicio telaInicial = new Inicio();
+
+            // telaInicial.ShowDialog();
+            ;
         }
     }
 }
