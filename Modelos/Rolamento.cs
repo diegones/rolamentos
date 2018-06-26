@@ -25,7 +25,7 @@ namespace Modelos
         [Required]
         public int W1 { get; set; }
 
-        //[Required]
+        [Required]
         public ICollection<Veiculo> ListaVeiculos { get; set; }
     }
 }

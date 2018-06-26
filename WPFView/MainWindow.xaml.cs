@@ -1,4 +1,5 @@
-﻿using Controllers;
+﻿using Controller;
+using Controllers;
 using Modelos;
 using System;
 using System.Collections.Generic;
@@ -65,6 +66,11 @@ namespace WPFView
 
             // telaInicial.ShowDialog();
             ;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cbMarca.ItemsSource = VeiculoController.ListarTodos();
         }
     }
 }

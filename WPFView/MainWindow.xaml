@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Button x:Name="BtnCadastrarRol" Content="Cadastrar" HorizontalAlignment="Left" Margin="366,325,0,0" VerticalAlignment="Top" Width="75" Click="BtnCadastrarRol_Click"/>
         <Button x:Name="BtnBuscarRol" Content="Buscar" HorizontalAlignment="Left" Margin="366,350,0,0" VerticalAlignment="Top" Width="75" Click="BtnBuscarRol_Click"/>
@@ -17,7 +17,7 @@
         <Label Content="Do:" HorizontalAlignment="Left" Margin="263,170,0,0" VerticalAlignment="Top"/>
         <Label Content="Di:" HorizontalAlignment="Left" Margin="267,142,0,0" VerticalAlignment="Top"/>
         <Label Content="Sku:" HorizontalAlignment="Left" Margin="259,114,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbMarca" HorizontalAlignment="Left" Margin="341,228,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbMarca" HorizontalAlignment="Left" Margin="341,228,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="{Binding Marca}" SelectedValuePath="{Binding IdVeiculo}"/>
         <Label Content="Marca:" HorizontalAlignment="Left" Margin="246,224,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.211,-0.615"/>
         <Label Content="Modelo:" HorizontalAlignment="Left" Margin="237,253,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbModelo" HorizontalAlignment="Left" Margin="341,257,0,0" VerticalAlignment="Top" Width="120"/>
