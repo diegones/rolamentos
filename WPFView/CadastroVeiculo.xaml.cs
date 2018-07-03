@@ -28,19 +28,23 @@ namespace WPFView
 
         private void BtnCadastrarVeic_Click(object sender, RoutedEventArgs e)
         {
-            try
+           try
 
             {
                 VeiculoController veiculoController = new VeiculoController();
-
+            Veiculo veiculo = new Veiculo();
                 if (string.IsNullOrEmpty(txtMarca.Text))
+                
+            throw new NullReferenceException("Os campos marca e modelo são obrigatórios.");
+                if (string.IsNullOrEmpty(txtModelo.Text))
 
-                    throw new NullReferenceException("O campo marca é obrigatório.");
-
-                Veiculo veiculo = new Veiculo();
+                throw new NullReferenceException("Os campos marca e modelo são obrigatórios.");
 
                 veiculo.Marca = txtMarca.Text;
+                veiculo.Modelo = txtModelo.Text;
+                
                 veiculoController.Incluir(veiculo);
+        
                 MessageBox.Show("Veiculo Salvo com sucesso!");
             }
 
@@ -59,9 +63,7 @@ namespace WPFView
         private void BtnCancelarVeic_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            //Inicio telaInicial = new Inicio();
 
-            //telaInicial.ShowDialog();
             ;
         }
     }

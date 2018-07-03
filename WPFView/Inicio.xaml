@@ -7,11 +7,19 @@
         mc:Ignorable="d"
         Title="Inicio" Height="450" Width="800">
     <Grid>
-        <Button Name="BtnVeiculo" Content="Veicuo" HorizontalAlignment="Left" Margin="146,371,0,0" VerticalAlignment="Top" Width="75" Click="BtnVeiculo_Click"/>
+        <Button Name="BtnVeiculo" Content="Veiculo" HorizontalAlignment="Left" Margin="146,371,0,0" VerticalAlignment="Top" Width="75" Click="BtnVeiculo_Click"/>
         <Button Name="BtnRolamento" Content="Rolamento" HorizontalAlignment="Left" Margin="46,371,0,0" VerticalAlignment="Top" Width="75" Click="BtnRolamento_Click"/>
         <!--<Button Name="BtnCatalogo" Content="Catálogo" HorizontalAlignment="Left" Margin="352,200,0,0" VerticalAlignment="Top" Width="75" Click="BtnCatalogo_Click"/> -->
         <Label Content="Cadastros" HorizontalAlignment="Left" Margin="100,325,0,0" VerticalAlignment="Top"/>
         <Button Name="BtnSair" Content="Sair" HorizontalAlignment="Left" Margin="687,371,0,0" VerticalAlignment="Top" Width="75" Click="BtnSair_Click"/>
+        <ComboBox x:Name="cbInterno" HorizontalAlignment="Left" Margin="185,75,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="Di" SelectedValuePath="{Binding Id}"/>
+        <ComboBox x:Name="cbExterno" HorizontalAlignment="Left" Margin="362,75,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="Do" SelectedValuePath="{Binding Id}"/>
+        <ComboBox x:Name="cbLargura" HorizontalAlignment="Left" Margin="538,75,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="W1" SelectedValuePath="{Binding Id}"/>
+        <Label Content="Diametro Interno" HorizontalAlignment="Left" Margin="197,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Diametro Externo" HorizontalAlignment="Left" Margin="372,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Largura" HorizontalAlignment="Left" Margin="574,44,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dtGrideRolamento" HorizontalAlignment="Left" Height="189" Margin="185,138,0,0" VerticalAlignment="Top" Width="473" SelectionChanged="dtGrideRolamento_SelectionChanged" Initialized="dtGrideRolamento_Initialized" />
+        <Button Name="BtnBuscarMedida" Content="Buscar" HorizontalAlignment="Left" Margin="385,113,0,0" VerticalAlignment="Top" Width="75" Click="BtnBuscarMedida_Click"/>
 
     </Grid>
 </Window>

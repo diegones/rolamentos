@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Controllers;
+using Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,18 @@ namespace WPFView
         public Inicio()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            RolamentoController rolamentoController = new RolamentoController();
+            Rolamento rolamento = new Rolamento();
+
+
+            cbInterno.ItemsSource = rolamentoController.ListarTodos();
+            cbExterno.ItemsSource = rolamentoController.ListarTodos();
+            cbLargura.ItemsSource = rolamentoController.ListarTodos();
+
         }
 
         private void BtnSair_Click(object sender, RoutedEventArgs e)
@@ -54,6 +68,29 @@ namespace WPFView
 
         }
 
+        private void BtnBuscarMedida_Click(object sender, RoutedEventArgs e)
+        {
 
+            
+
+        }
+
+        private void dtGrideRolamento_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+                RolamentoController rolamentoController = new RolamentoController();
+
+                Rolamento a = (Rolamento)dtGrideRolamento.SelectedItem;
+
+                       
+        }
+        private void dtGrideRolamento_Initialized(object sender, EventArgs e)
+        {
+            RolamentoController rolamentoController = new RolamentoController();
+
+            Rolamento rolamento = new Rolamento();
+
+            dtGrideRolamento.ItemsSource = rolamentoController.ListarTodos();
+        }
     }
 }

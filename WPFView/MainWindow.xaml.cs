@@ -26,6 +26,7 @@ namespace WPFView
         public MainWindow()
         {
             InitializeComponent();
+            //cbModelo.IsEnabled = false;
         }
 
         private void BtnCadastrarRol_Click(object sender, RoutedEventArgs e)
@@ -39,9 +40,18 @@ namespace WPFView
 
                     throw new NullReferenceException("O campo SKU é obrigatório.");
 
+
+
                 Rolamento rolamento = new Rolamento();
 
-                rolamento.Sku = txtSku.Text;                    
+                
+                rolamento.Sku = txtSku.Text;
+                rolamento.Di = Convert.ToInt32(txtDi.Text);
+                rolamento.Do = Convert.ToInt32(txtDo.Text);
+                rolamento.W1 = Convert.ToInt32(txtW1.Text);
+                rolamento.MarcaVeiculo = cbMarca.Text;
+                rolamento.ModeloVeiculo = cbModelo.Text;
+
                 rolamentoController.Incluir(rolamento);                        
                 MessageBox.Show("Rolamento Salvo com sucesso!");
             }
@@ -62,15 +72,23 @@ namespace WPFView
         private void BtnCancelarRol_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-           // Inicio telaInicial = new Inicio();
 
-            // telaInicial.ShowDialog();
             ;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cbMarca.ItemsSource = VeiculoController.ListarTodos();
+           VeiculoController veiculoController = new VeiculoController();
+            Veiculo veiculo = new Veiculo();
+           
+
+            cbMarca.ItemsSource = veiculoController.ListarTodos();
+            cbModelo.ItemsSource = veiculoController.ListarPorNome(veiculo.Marca);
+
+        }
+        private void cbMarca_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
