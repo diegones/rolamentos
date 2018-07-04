@@ -48,7 +48,12 @@ namespace Controller
 
         public IList<Veiculo> ListarPorNome(string nome)
         {
-            return contexto.Veiculos.Where(carro => carro.Marca == nome || carro.Modelo == nome).ToList();
+            return contexto.Veiculos.Where(carro => carro.Marca.Contains(nome)).ToList();
+        }
+
+        public IList<Veiculo> ListaVeiculosPorMarca(string marca)
+        {
+            return contexto.Veiculos.Where(carro => carro.Marca.Contains(marca)).ToList();
         }
 
     }

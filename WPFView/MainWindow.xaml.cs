@@ -23,10 +23,19 @@ namespace WPFView
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        RolamentoController rolamentoController = new RolamentoController();
+        VeiculoController veiculoContorller = new VeiculoController();
+        IList<Veiculo> listaVeiculos = new List<Veiculo>();
+             
         public MainWindow()
         {
             InitializeComponent();
+
+            listaVeiculos = veiculoContorller.ListarTodos();
+
             //cbModelo.IsEnabled = false;
+            cbMarca.ItemsSource = listaVeiculos;
         }
 
         private void BtnCadastrarRol_Click(object sender, RoutedEventArgs e)
@@ -34,7 +43,6 @@ namespace WPFView
             try
 
             {
-                RolamentoController rolamentoController = new RolamentoController();
                                
                 if (string.IsNullOrEmpty(txtSku.Text))
 
@@ -78,16 +86,33 @@ namespace WPFView
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           VeiculoController veiculoController = new VeiculoController();
-            Veiculo veiculo = new Veiculo();
+           //VeiculoController veiculoController = new VeiculoController();
+            //Veiculo veiculo = new Veiculo();
            
 
-            cbMarca.ItemsSource = veiculoController.ListarTodos();
-            cbModelo.ItemsSource = veiculoController.ListarPorNome(veiculo.Marca);
+            //cbMarca.ItemsSource = veiculoController.ListarTodos();
+            //cbModelo.ItemsSource = veiculoController.ListarPorNome(veiculo.Marca);
 
         }
         private void cbMarca_Loaded(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void cbMarca_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Veiculo marcaSel = (Veiculo)cbMarca.SelectedItem;
+
+            //LINQ
+
+            IEnumerable<Veiculo> veiculosSelecionados = from a in listaVeiculos
+                                                            where a.Marca.ToLower().Contains(marcaSel.Marca.ToLower())
+                                                            select a;
+            cbModelo.IsEnabled = true;
+            cbModelo.ItemsSource = null;
+            cbModelo.ItemsSource = veiculosSelecionados;
+
+
 
         }
     }
