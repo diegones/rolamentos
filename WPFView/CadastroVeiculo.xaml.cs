@@ -42,17 +42,17 @@ namespace WPFView
             Veiculo veiculo = new Veiculo();
                 if (string.IsNullOrEmpty(txtMarca.Text))
                 
-            throw new NullReferenceException("Os campos marca e modelo são obrigatórios.");
+            throw new NullReferenceException("ALOWWW!!! Os campos marca e modelo são obrigatórios.");
                 if (string.IsNullOrEmpty(txtModelo.Text))
 
-                throw new NullReferenceException("Os campos marca e modelo são obrigatórios.");
+                throw new NullReferenceException("ALOWWWW!!! Os campos marca e modelo são obrigatórios.");
 
                 veiculo.Marca = txtMarca.Text;
                 veiculo.Modelo = txtModelo.Text;
                 
                 veiculoController.Incluir(veiculo);
         
-                MessageBox.Show("Veiculo Salvo com sucesso!");
+                MessageBox.Show("Você é Demais! Veiculo Salvo com sucesso!");
 
                 dtGrideVeiculos.ItemsSource = veiculoController.ListarTodos();
                 txtMarca.Text = "";
@@ -61,7 +61,7 @@ namespace WPFView
 
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao salvar (" + ex.Message + ")");
+                MessageBox.Show("tsc tsc tsc Erro ao salvar (" + ex.Message + ")");
             }
       
         }
@@ -75,7 +75,7 @@ namespace WPFView
             txtMarca.Text = "";
             txtModelo.Text = "";
 
-            MessageBox.Show("Veículo atualizado com sucesso");
+            MessageBox.Show("Boaaa...Veículo atualizado com sucesso");
 
             BtnDeletarVeic.IsEnabled = false;
             BtnAtualizarVeic.IsEnabled = false;
@@ -129,7 +129,7 @@ namespace WPFView
             BtnAtualizarVeic.IsEnabled = false;
             BtnCadastrarVeic.IsEnabled = true;
 
-            MessageBox.Show("Exclusão efetuada com sucesso");
+            MessageBox.Show("Xo Lata velha! Sai pra lá! Exclusão efetuada com sucesso");
 
           
         }

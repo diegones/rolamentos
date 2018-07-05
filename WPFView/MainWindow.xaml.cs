@@ -77,7 +77,7 @@ namespace WPFView
                     string.IsNullOrEmpty(txtDo.Text) || string.IsNullOrEmpty(txtW1.Text) ||
                     string.IsNullOrEmpty(cbMarca.Text) || string.IsNullOrEmpty(cbModelo.Text))
 
-                    throw new NullReferenceException("ABRE O OLHO!! Todos os campos devem ser preenchidos, VERIFIQUE!");
+                    throw new NullReferenceException("Cochilou o Cachimbo caí! ABRE O OLHO!! Todos os campos devem ser preenchidos, VERIFIQUE!");
 
 
 
@@ -104,7 +104,7 @@ namespace WPFView
 
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao salvar (" + ex.Message + ")");
+                MessageBox.Show("Cué cué cué cué! Erro ao salvar (" + ex.Message + ")");
             }
         }
 
@@ -128,7 +128,7 @@ namespace WPFView
             BtnAtualizarRol.IsEnabled = false;
             BtnCadastrarRol.IsEnabled = true;
 
-            MessageBox.Show("Exclusão efetuada com sucesso");
+            MessageBox.Show("Foi pro beleléu!");
         }
         
 
@@ -194,7 +194,7 @@ namespace WPFView
             cbMarca.Text = "";
             cbModelo.Text = "";
 
-            MessageBox.Show("Rolamento atualizado com sucesso");
+            MessageBox.Show("Irra! Rolamento atualizado com sucesso");
 
             dtGridRolamentos.ItemsSource = rolamentoController.ListarTodos();
             BtnDeletarRol.IsEnabled = false;
