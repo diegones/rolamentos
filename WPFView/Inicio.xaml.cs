@@ -24,6 +24,7 @@ namespace WPFView
     {
         RolamentoController rolamentoController = new RolamentoController();
         IList<Rolamento> listaRolamentos = new List<Rolamento>();
+        
 
         public Inicio()
         {
@@ -59,8 +60,8 @@ namespace WPFView
 
             CadastroVeiculo cadVeic = new CadastroVeiculo();
 
-            
 
+            this.Close();
             cadVeic.ShowDialog();
 
         }
@@ -72,12 +73,13 @@ namespace WPFView
             MainWindow cadRol = new MainWindow();
 
 
-
+            this.Close();
             cadRol.ShowDialog();
+          
 
         }
 
-        private void BtnBuscarMedida_Click(object sender, RoutedEventArgs e)
+        private void BtnLimparMedida_Click(object sender, RoutedEventArgs e)
         {
             cbInterno.ItemsSource = cbExterno.ItemsSource = cbLargura.ItemsSource = dtGrideRolamento.ItemsSource = listaRolamentos = rolamentoController.ListarTodos();
             cbInterno.IsEnabled = true;
@@ -85,15 +87,6 @@ namespace WPFView
 
         }
 
-        private void dtGrideRolamento_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           
-                RolamentoController rolamentoController = new RolamentoController();
-
-                Rolamento a = (Rolamento)dtGrideRolamento.SelectedItem;
-
-                       
-        }
 
         private void dtGrideRolamento_Initialized(object sender, EventArgs e)
         {

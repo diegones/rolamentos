@@ -7,13 +7,17 @@
         mc:Ignorable="d"
         Title="CadastroVeiculo" Height="450" Width="800">
     <Grid>
-        <TextBox Name="txtMarca" HorizontalAlignment="Left" Height="23" Margin="405,128,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtModelo" HorizontalAlignment="Left" Height="22" Margin="405,169,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Marca" HorizontalAlignment="Left" Margin="337,125,0,0" VerticalAlignment="Top"/>
-        <Label Content="Modelo" HorizontalAlignment="Left" Margin="337,169,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="BtnCadastrarVeic" Content="Cadastrar" HorizontalAlignment="Left" Margin="352,226,0,0" VerticalAlignment="Top" Width="76" Click="BtnCadastrarVeic_Click"/>
-        <Button x:Name="BtnBuscarVeic" Content="Buscar" HorizontalAlignment="Left" Margin="352,251,0,0" VerticalAlignment="Top" Width="76" Click="BtnBuscarVeic_Click"/>
-        <Button x:Name="BtnCancelarVeic" Content="Cancelar" HorizontalAlignment="Left" Margin="352,276,0,0" VerticalAlignment="Top" Width="76" Click="BtnCancelarVeic_Click"/>
+        <TextBox Name="txtMarca" HorizontalAlignment="Left" Height="23" Margin="114,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtModelo" HorizontalAlignment="Left" Height="22" Margin="114,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Marca" HorizontalAlignment="Left" Margin="36,125,0,0" VerticalAlignment="Top"/>
+        <Label Content="Modelo" HorizontalAlignment="Left" Margin="36,165,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BtnCadastrarVeic" Content="Salvar" HorizontalAlignment="Left" Margin="138,206,0,0" VerticalAlignment="Top" Width="76" Click="BtnCadastrarVeic_Click"/>
+        <Button x:Name="BtnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="670,389,0,0" VerticalAlignment="Top" Width="76" Click="BtnVoltar_Click"/>
+        <DataGrid x:Name="dtGrideVeiculos" HorizontalAlignment="Left" Height="253" Margin="296,108,0,0" VerticalAlignment="Top" Width="364" SelectionChanged="dtGrideVeiculos_SelectionChanged" Initialized="dtGrideVeiculos_Initialized" CanUserAddRows="false"/>
+        <Button x:Name="BtnAtualizarVeic" Content="Atualizar" HorizontalAlignment="Left" Margin="140,231,0,0" VerticalAlignment="Top" Width="74" IsEnabled="False" Click="BtnAtualizarVeic_Click"/>
+        <Button x:Name="BtnDeletarVeic" Content="Deletar" HorizontalAlignment="Left" Margin="140,256,0,0" VerticalAlignment="Top" Width="74" Click="BtnDeletarVeic_Click" IsEnabled="False"/>
+        <Label Content="Cadastro de Veículos" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Height="32" Width="188" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Relação de Veículos Cadastrados" HorizontalAlignment="Left" Margin="416,77,0,0" VerticalAlignment="Top" Width="122"/>
 
     </Grid>
 </Window>

@@ -20,10 +20,17 @@ namespace WPFView
     /// Lógica interna para CadastroVeiculo.xaml
     /// </summary>
     public partial class CadastroVeiculo : Window
+
+        
     {
-        public CadastroVeiculo()
-        {
+        Veiculo veicTemp = new Veiculo();
+        IList<Veiculo> listaVeiculos = new List<Veiculo>();
+        VeiculoController veiculoController = new VeiculoController();
+
+    public CadastroVeiculo()
+        {   
             InitializeComponent();
+        
         }
 
         private void BtnCadastrarVeic_Click(object sender, RoutedEventArgs e)
@@ -46,25 +53,85 @@ namespace WPFView
                 veiculoController.Incluir(veiculo);
         
                 MessageBox.Show("Veiculo Salvo com sucesso!");
+
+                dtGrideVeiculos.ItemsSource = veiculoController.ListarTodos();
+                txtMarca.Text = "";
+                txtModelo.Text = "";
             }
 
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao salvar (" + ex.Message + ")");
             }
+      
         }
-        private void BtnBuscarVeic_Click (object sender, RoutedEventArgs e)
+        private void BtnAtualizarVeic_Click (object sender, RoutedEventArgs e)
         {
-            CadastroVeiculo cadVeic = new CadastroVeiculo();
+            veicTemp.Marca = txtMarca.Text;
+            veicTemp.Modelo = txtModelo.Text;
+            veiculoController.Editar(veicTemp);
 
-            cadVeic.ShowDialog();
+            dtGrideVeiculos.ItemsSource = veiculoController.ListarTodos();
+            txtMarca.Text = "";
+            txtModelo.Text = "";
+
+            MessageBox.Show("Veículo atualizado com sucesso");
+
+            BtnDeletarVeic.IsEnabled = false;
+            BtnAtualizarVeic.IsEnabled = false;
+            BtnCadastrarVeic.IsEnabled = true;
         }
 
-        private void BtnCancelarVeic_Click(object sender, RoutedEventArgs e)
+        private void BtnVoltar_Click(object sender, RoutedEventArgs e)
         {
+            Inicio inicio = new Inicio();
             this.Close();
+            inicio.ShowDialog();
+        }
 
-            ;
+        private void dtGrideVeiculos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            veicTemp = (Veiculo)dtGrideVeiculos.SelectedItem;
+
+            if(veicTemp != null)
+            {
+                txtMarca.Text = veicTemp.Marca;
+                txtModelo.Text = veicTemp.Modelo;
+
+                BtnDeletarVeic.IsEnabled = true;
+                BtnAtualizarVeic.IsEnabled = true;
+                BtnCadastrarVeic.IsEnabled = false;
+            }
+        }
+
+        private void dtGrideVeiculos_Initialized(object sender, EventArgs e)
+        {
+            VeiculoController veiculoController   = new VeiculoController();
+
+            Veiculo veiculo = new Veiculo();
+
+
+            dtGrideVeiculos.ItemsSource = veiculoController.ListarTodos();
+
+        }
+
+        private void BtnDeletarVeic_Click(object sender, RoutedEventArgs e)
+        {
+          
+            veiculoController.Excluir (veicTemp.IdVeiculo);
+            dtGrideVeiculos.UnselectAllCells();
+            txtMarca.Text = "";
+            txtModelo.Text = "";
+
+            dtGrideVeiculos.ItemsSource = veiculoController.ListarTodos();
+
+            BtnDeletarVeic.IsEnabled = false;
+            BtnAtualizarVeic.IsEnabled = false;
+            BtnCadastrarVeic.IsEnabled = true;
+
+            MessageBox.Show("Exclusão efetuada com sucesso");
+
+          
         }
     }
 }
