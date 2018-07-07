@@ -30,7 +30,10 @@ namespace WPFView
         {
             InitializeComponent();
             listaRolamentos = rolamentoController.ListarTodos();
-            cbInterno.ItemsSource = cbExterno.ItemsSource = cbLargura.ItemsSource = listaRolamentos;
+            cbInterno.ItemsSource = listaRolamentos.GroupBy(r => r.Di);
+
+
+                //cbExterno.ItemsSource = cbLargura.ItemsSource = listaRolamentos;
 
             cbExterno.IsEnabled = false;
             cbLargura.IsEnabled = false;
@@ -83,8 +86,12 @@ namespace WPFView
         {
             cbInterno.ItemsSource = cbExterno.ItemsSource = cbLargura.ItemsSource = dtGrideRolamento.ItemsSource = listaRolamentos = rolamentoController.ListarTodos();
             cbInterno.IsEnabled = true;
+            
+            cbInterno.Text = "";
+            cbExterno.Text = "";
+            cbLargura.Text = "";
+            cbExterno.IsEnabled = false;
             cbLargura.IsEnabled = false;
-
         }
 
 
@@ -99,45 +106,68 @@ namespace WPFView
     
         private void cbInterno_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Rolamento rolSel = (Rolamento)cbInterno.SelectedItem;
+            IGrouping<int, Rolamento> grupo = (IGrouping<int, Rolamento>)cbInterno.SelectedItem;
 
-            carregaRolamentoExterno(rolSel.Do);
-            // carregaRolamentoDiametro(rolSel.W1);
-            
+            carregaRolamentoInterno(grupo.Key);
+           
         }
 
         private void cbExterno_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            Rolamento rolSel = (Rolamento)cbExterno.SelectedItem;
 
-            if (rolSel != null)
+
+            IGrouping<int, Rolamento> grupo = (IGrouping<int, Rolamento>)cbExterno.SelectedItem;
+
+       
+            carregaRolamentoExterno(grupo.Key);
+            cbInterno.IsEnabled = false;
+
+            //Rolamento rolSel = (Rolamento)cbExterno.SelectedItem;
+
+            // if (rolSel != null)
             {
-                carregaRolamentoDiametro(rolSel.W1);
-                cbInterno.IsEnabled = false;
+           //     carregaRolamentoExterno(rolSel.Do);
+               // cbInterno.IsEnabled = false;
 
             }
         }
 
         private void cbLargura_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cbExterno.IsEnabled = false;
+
+            IGrouping<int, Rolamento> grupo = (IGrouping<int, Rolamento>)cbLargura.SelectedItem;
+
+            carregaRolamentoDiametro(grupo.Key);
+
+            //Rolamento rolSel = (Rolamento)cbLargura.SelectedItem;
+
+           // if (rolSel != null)
+            {
+                
+            //    carregaRolamentoDiametro(rolSel.W1);
+            }
         }
 
         public void carregaRolamentoExterno(int valor)
         {
             //LINQ
-            IEnumerable<Rolamento> rolamentosSelecionados = from rol in listaRolamentos
-                                                          where rol.Do.Equals(valor)
-                                                         select rol;
-            cbExterno.ItemsSource = null;
+            IEnumerable<Rolamento> rolamentosSelecionados =  rolamentoController.ListarPorDiametroExterno(valor);
+
+            //numerable<Rolamento> rolamentosSelecionados = rolamentoController.ListarPorDiametroExterno(valor);
+             //   from rol in listaRolamentos
+                                                      //    where rol.Do.Equals(valor)
+                                                        // select rol;
+
+
+            //cbExterno.ItemsSource = null;
             cbExterno.ItemsSource = rolamentosSelecionados;
 
             dtGrideRolamento.ItemsSource = null;
             dtGrideRolamento.ItemsSource = rolamentosSelecionados;
             dtGrideRolamento.Items.Refresh();
 
-            cbExterno.IsEnabled = true;
+           
+            cbLargura.IsEnabled = true;
 
 
         }
@@ -145,30 +175,34 @@ namespace WPFView
         public void carregaRolamentoInterno(int valor)
         {
             //LINQ
-            IEnumerable<Rolamento> rolamentosSelecionados = from rol in listaRolamentos
-                                                            where rol.Di.Equals(valor)
-                                                            select rol;
-            cbLargura.ItemsSource = null;
-            cbLargura.ItemsSource = rolamentosSelecionados;
+
+           // rolamentoController.ListarPorDiametroInterno(valor);
+            IEnumerable<Rolamento> rolamentosSelecionados = rolamentoController.ListarPorDiametroInterno(valor);
+            //                                                   from rol in listaRolamentos where rol.Di.Equals(valor)
+            //                                                      select rol;
+            //cbExterno.ItemsSource = null;
+            cbExterno.ItemsSource = rolamentosSelecionados.GroupBy(r => r.Do);
 
             dtGrideRolamento.ItemsSource = null;
             dtGrideRolamento.ItemsSource = rolamentosSelecionados;
             dtGrideRolamento.Items.Refresh();
 
-
+            cbExterno.IsEnabled = true;
         }
 
         public void carregaRolamentoDiametro(int valor)
         {
             //LINQ
-            IEnumerable<Rolamento> rolamentosSelecionados = from rol in listaRolamentos
-                                                            where rol.W1.Equals(valor)
-                                                            select rol;
-            cbLargura.ItemsSource = null;
-            cbLargura.ItemsSource = rolamentosSelecionados;
+
+            IEnumerable<Rolamento> rolamentosSelecionados = rolamentoController.ListarPorlargura(valor);
+            //IEnumerable<Rolamento> rolamentosSelecionados = from rol in listaRolamentos
+              //                                              where rol.W1.Equals(valor)
+                //                                            select rol;
+            //cbExterno.ItemsSource = null;
+            cbExterno.ItemsSource = rolamentosSelecionados;
             dtGrideRolamento.ItemsSource = rolamentosSelecionados;
 
-            cbLargura.IsEnabled = true;
+            
 
             dtGrideRolamento.ItemsSource = null;
             dtGrideRolamento.ItemsSource = rolamentosSelecionados;

@@ -51,6 +51,19 @@ namespace Controllers
         {
             return contexto.Rolamentos.ToList();
         }
+
+        public IList<Rolamento> ListarPorDiametroInterno(int diametroInterno)
+        {
+            return contexto.Rolamentos.Where(r => r.Di == diametroInterno).ToList();
+        }
+        public IList<Rolamento> ListarPorDiametroExterno(int diametroExterno)
+        {
+            return contexto.Rolamentos.Where(r => r.Do == diametroExterno).ToList();
+        }
+        public IList<Rolamento> ListarPorlargura(int largura)
+        {
+            return contexto.Rolamentos.Where(r => r.W1 == largura).ToList();
+        }
     }
 
         //aplicar buscar por medida, escalavel "query"
